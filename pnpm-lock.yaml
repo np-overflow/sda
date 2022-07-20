@@ -2,13 +2,11 @@ lockfileVersion: 5.4
 
 specifiers:
   '@slidev/cli': ^0.34.3
-  '@slidev/theme-default': '*'
-  '@slidev/theme-seriph': '*'
+  slidev-theme-geist: ^0.8.1
 
 dependencies:
   '@slidev/cli': 0.34.3_postcss@8.4.14
-  '@slidev/theme-default': 0.21.2
-  '@slidev/theme-seriph': 0.21.3
+  slidev-theme-geist: 0.8.1
 
 packages:
 
@@ -252,28 +250,8 @@ packages:
       js-yaml: 4.1.0
     dev: false
 
-  /@slidev/theme-default/0.21.2:
-    resolution: {integrity: sha512-neUucFs2YrRZZd73QwvLTyRG/o1nerDFUR5t8YAmXVLTMzWfY71flQ6aAhjYf+WjsozYsOHcxi/pZtIzZ4VhTQ==}
-    engines: {node: '>=14.0.0', slidev: '>=0.19.2'}
-    dependencies:
-      '@slidev/types': 0.22.7
-      codemirror-theme-vars: 0.1.1
-      prism-theme-vars: 0.2.4
-      theme-vitesse: 0.1.14
-    dev: false
-
-  /@slidev/theme-seriph/0.21.3:
-    resolution: {integrity: sha512-cLya6O4hmcLHUhloCMPPoKMLX27Q+8M8pRS82BSsLXVeXTXrlpc3l3glx5VB738p+NQr7FgqFN6H2CXQRoVv9Q==}
-    engines: {node: '>=14.0.0', slidev: '>=0.19.3'}
-    dependencies:
-      '@slidev/types': 0.22.7
-      codemirror-theme-vars: 0.1.1
-      prism-theme-vars: 0.2.4
-      theme-vitesse: 0.1.14
-    dev: false
-
-  /@slidev/types/0.22.7:
-    resolution: {integrity: sha512-mCVKQbcGTv6d6n9aHpYNp5U04HF+FMbpY083vqpJ6Folc805BB1Am02eubaW0J6nM+dSOu2dDgPY+kIjs75sAQ==}
+  /@slidev/types/0.28.10:
+    resolution: {integrity: sha512-XcJ12giBaeSHxImlYuDfO1XW686kWDq4uoftnPZyIxhNew4FREsbOLY8oG5Nz5qn05qSsnSDQGo55EbantKvfg==}
     engines: {node: '>=14.0.0'}
     dev: false
 
@@ -2385,6 +2363,15 @@ packages:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
     dev: false
 
+  /slidev-theme-geist/0.8.1:
+    resolution: {integrity: sha512-2DET+H1tvaFQyKYimg+4RlShLLnyOdW40GFfOH8kAJbsI1JOwzDiLv1UjyFO11y9O0/074/YIwArz9xg4Zde5A==}
+    engines: {node: '>=14', slidev: '>=0.20'}
+    dependencies:
+      '@slidev/types': 0.28.10
+      codemirror-theme-vars: 0.1.1
+      prism-theme-vars: 0.2.4
+    dev: false
+
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
@@ -2455,11 +2442,6 @@ packages:
   /supports-preserve-symlinks-flag/1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
-    dev: false
-
-  /theme-vitesse/0.1.14:
-    resolution: {integrity: sha512-b5s+Zpfaw5+djoCJ9AEbcTbpiTlLsOvGM9oblDmmWRGWNqg9oXtEYO/uwubwx77novHBI6zNuwZRHKNlAIBo4A==}
-    engines: {vscode: ^1.43.0}
     dev: false
 
   /to-fast-properties/2.0.0:
