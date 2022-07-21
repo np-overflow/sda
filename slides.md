@@ -42,7 +42,7 @@ Please install the following:
 <v-click>
 <div class="text-center text-blue-600 border-1 border-blue-500 rounded-sm font-semibold text-xl bg-blue-100">
 
-Head over to `#tech-support` on our Discord server
+Head over to `#tech-support` on our [Discord server](https://discord.gg/YB5925kr)
 
 </div>
 </v-click>
