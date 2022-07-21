@@ -18,6 +18,8 @@ info: |
 
 Part II
 
+Open slides here: https://sda.np-overflow.club
+
 ---
 
 # Installation
