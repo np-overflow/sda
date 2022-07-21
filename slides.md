@@ -344,3 +344,36 @@ url: https://app.sli.do/event/aBFgfQS8ZNRrYLJxxMzNhj/embed/polls/ae6f1842-b636-4
 **Task:** Find a real life application which you can apply Clean Architecture to
 
 **Once done:** Submit to sli.do on the right!
+
+---
+
+# Practical time!
+
+<v-clicks>
+
+* Let's rewrite a program with Clean Architecture
+* The program
+  * [ ]  Has an HTTP API endpoint we can interact with
+  * [ ]  Shows the keyboards in our collection
+  * [ ]  When new keyboards arrive, add them to our collection
+* Before we begin, we need a few things:
+  1. Starter code [here](https://gitlab.com/-/snippets/2374405)
+  2. API tester [here](https://hopp.sh/r/oBDUknNJGLrX)
+
+</v-clicks>
+
+<br/>
+
+<v-click>
+<div class="text-center text-green-600 border-1 border-green-500 rounded-sm font-semibold text-xl bg-green-100">
+
+Open them on your laptop!
+
+</div>
+</v-click>
+
+---
+layout: center
+---
+
+# ⚠️ Demo on screen! ⚠️
