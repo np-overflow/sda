@@ -20,6 +20,34 @@ Part II
 
 ---
 
+# Installation
+
+Due to certain language limitations of Python, we'll be using ✨ Typescript ✨ for this workshop!
+
+Please install the following:
+
+1. [ ]  NodeJS & NPM [Install here](https://docs.volta.sh/guide/getting-started)
+2. [ ]  Your favorite code editor [or VSCode](https://code.visualstudio.com)
+
+---
+
+# Tech support
+
+* Don't panic, find help
+
+<br/>
+
+<v-click>
+<div class="text-center text-blue-600 border-1 border-blue-500 rounded-sm font-semibold text-xl bg-blue-100">
+
+Head over to `#tech-support` on our Discord server
+
+</div>
+</v-click>
+
+
+---
+
 # Recap from last week
 
 * Object-Oriented Programming (with Python 🐍)
@@ -64,7 +92,7 @@ Part II
 <div grid="~ cols-2" gap="3">
 <div>
 
-✅ `keyboard.js`
+✅ `keyboard.ts`
 ```js
 class Keyboard {
   type() {
@@ -73,7 +101,7 @@ class Keyboard {
 }
 ```
 
-✅ `mouse.js` 
+✅ `mouse.ts` 
 ```js
 class Mouse {
     scroll() {
@@ -85,7 +113,7 @@ class Mouse {
 </div>
 <div>
 
-❌ `accessories.js`
+❌ `accessories.ts`
 ```js
 class Accessories {
     type() {
@@ -104,12 +132,12 @@ class Accessories {
 
 # Open closed principle
 
-* Each class should only manage a **single** thing
+* Clases should be **open for *extension*** but **closed for *modification***
 
 <div grid="~ cols-2" gap="3">
 <div>
 
-✅ `keyboard.js`
+✅ `keyboard.ts`
 ```js
 class Keyboard {
   type() {
@@ -118,11 +146,13 @@ class Keyboard {
 }
 ```
 
-✅ `mouse.js`
+✅ `rgb-keyboard.ts`
 ```js
-class Mouse {
-    scroll() {
-        console.log('wheeeeee')
+class RGBKeyboard extends Keyboard {
+    colors = ['red', 'green', 'blue']
+    
+    showFancyLights() {
+        console.log(colors)
     }
 }
 ```
@@ -130,14 +160,16 @@ class Mouse {
 </div>
 <div>
 
-❌ `accessories.js`
-```js
-class Accessories {
+❌ `keyboard.ts`
+```js {all|2,7-9}
+class Keyboard {
+    colors = ['red', 'green', 'blue']
+    
     type() {
-        // ...
+        console.log('clang clang')
     }
-    scroll() {
-        // ...
+    showRGB() {
+        console.log('beep boop')
     }
 }
 ```
@@ -149,25 +181,22 @@ class Accessories {
 
 # Liskov substitution principle
 
-* Each class should only manage a **single** thing
+* If class `RGBKeyboard` is a subclass of `Keyboard`:
+  * `RGBKeyboard` should be able to replace `Keyboard` without any side effects
 
 <div grid="~ cols-2" gap="3">
 <div>
 
-✅ `keyboard.js`
-```js
-class Keyboard {
-  type() {
-    console.log('clang clang')
-  }
-}
-```
-
-✅ `mouse.js`
-```js
-class Mouse {
-    scroll() {
-        console.log('wheeeeee')
+`developer.ts`
+```typescript
+class Developer {
+    keyboard: Keyboard
+    constructor(keyboard: Keyboard) {
+      this.keyboard = keyboard
+    }
+    
+    writeCode() {
+        this.keyboard.type()
     }
 }
 ```
@@ -175,16 +204,15 @@ class Mouse {
 </div>
 <div>
 
-❌ `accessories.js`
-```js
-class Accessories {
-    type() {
-        // ...
-    }
-    scroll() {
-        // ...
-    }
-}
+`main.ts`
+```typescript {all|1-3|5-7}
+const logitechKeyboard = new Keyboard()
+const qinguan = new Developer(logitechKeyboard)
+qinguan.writeCode() // Writes code with `Keyboard`
+
+const razerKeyboard = new RGBKeyboard()
+const jimmy = new Developer(razerKeyboard)
+jimmy.writeCode() // Writes code with `RGBKeyboard`
 ```
 
 </div>
@@ -194,41 +222,39 @@ class Accessories {
 
 # Interface segregation principle
 
-* Each class should only manage a **single** thing
+* Interfaces (methods/properties of a class) should be split into their logical concerns
+* For example, read vs writes to a database can be 2 interfaces, instead of a huge interface
 
 <div grid="~ cols-2" gap="3">
 <div>
 
-✅ `keyboard.js`
-```js
-class Keyboard {
-  type() {
-    console.log('clang clang')
-  }
+✅ `keyboard.ts`
+```typescript
+interface KeyboardDatabaseWriter {
+    create(keyboard: Keyboard)
+    update(keyboard: Keyboard)
+    delete(keyboard: Keyboard)
 }
-```
 
-✅ `mouse.js`
-```js
-class Mouse {
-    scroll() {
-        console.log('wheeeeee')
-    }
+interface KeybaordDatabaseReader {
+  findByName(name: string)
+  findByBrand(brand: string)
+  findByPrice(price: string)
 }
 ```
 
 </div>
 <div>
 
-❌ `accessories.js`
-```js
-class Accessories {
-    type() {
-        // ...
-    }
-    scroll() {
-        // ...
-    }
+❌ `keyboard.ts`
+```typescript
+interface KeyboardDatabase {
+  create(keyboard: Keyboard)
+  findByName(name: string)
+  findByBrand(brand: string)
+  findByPrice(price: string)
+  update(keyboard: Keyboard)
+  delete(keyboard: Keyboard)
 }
 ```
 
@@ -239,25 +265,25 @@ class Accessories {
 
 # Dependency inversion principle
 
-* Each class should only manage a **single** thing
+* Dependencies should be on abstractions and not concretions
+* Instead of depending on classes, which are "concrete" and contain implementation, use interfaces which only define methods & not implementation
 
 <div grid="~ cols-2" gap="3">
 <div>
 
-✅ `keyboard.js`
-```js
-class Keyboard {
-  type() {
-    console.log('clang clang')
-  }
+`developer.ts`
+```typescript
+// Anything that I can type on is a keyboard!
+interface Keyboard {
+  type()
 }
-```
-
-✅ `mouse.js`
-```js
-class Mouse {
-    scroll() {
-        console.log('wheeeeee')
+class Developer {
+    keyboard: Keyboard // Depend on an interface
+    constructor(keyboard: Keyboard) {
+      this.keyboard = keyboard
+    }
+    writeCode() {
+        this.keyboard.type()
     }
 }
 ```
@@ -265,16 +291,17 @@ class Mouse {
 </div>
 <div>
 
-❌ `accessories.js`
-```js
-class Accessories {
-    type() {
-        // ...
-    }
-    scroll() {
-        // ...
-    }
-}
+`main.ts`
+```typescript
+// Any class that has a `type()` method can be used
+
+const logitechKeyboard = new Keyboard() 
+const qinguan = new Developer(logitechKeyboard)
+qinguan.writeCode() // Writes code with `Keyboard`
+
+const razerKeyboard = new RGBKeyboard()
+const jimmy = new Developer(razerKeyboard)
+jimmy.writeCode() // Writes code with `RGBKeyboard`
 ```
 
 </div>
@@ -303,3 +330,15 @@ class Accessories {
 | **Interface adapter**  | Mapping/connecting our use cases to frameworks/drivers |
 | **Frameworks/drivers** | Databases, HTTP handlers, user interfaces, etc         |
 
+---
+layout: iframe-right
+url: https://app.sli.do/event/aBFgfQS8ZNRrYLJxxMzNhj/embed/polls/ae6f1842-b636-47fa-a5db-6e128bb8c492
+---
+
+# Activity time!
+
+**Duration:** 10 minutes
+
+**Task:** Find a real life application which you can apply Clean Architecture to
+
+**Once done:** Submit to sli.do on the right!
