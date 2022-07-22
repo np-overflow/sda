@@ -47,6 +47,12 @@ Head over to `#tech-support` on our [Discord server](https://discord.gg/YB5925kr
 </div>
 </v-click>
 
+<style>
+a:hover {
+  text-decoration: underline;
+}
+</style>
+
 
 ---
 
