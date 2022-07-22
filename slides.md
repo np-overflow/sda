@@ -31,6 +31,12 @@ Please install the following:
 1. [ ]  NodeJS & NPM [Install here](https://docs.volta.sh/guide/getting-started)
 2. [ ]  Your favorite code editor [or VSCode](https://code.visualstudio.com)
 
+To run a file: open a terminal window and type:
+
+```shell
+npx tsx /path/to/file
+```
+
 ---
 
 # Tech support
@@ -383,3 +389,5 @@ layout: center
 ---
 
 # ⚠️ Demo on screen! ⚠️
+
+Open the downloaded file in your editor
